@@ -42,10 +42,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider value={{
-      user: { id: "mock-id", email: "demo@example.com" } as any,
-      session: { user: { id: "mock-id", email: "demo@example.com" } } as any,
-      loading: false,
-      signOut: async () => { }
+      user,
+      session,
+      loading,
+      signOut
     }}>
       {children}
     </AuthContext.Provider>

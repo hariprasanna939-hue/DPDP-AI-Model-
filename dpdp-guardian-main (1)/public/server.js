@@ -9,12 +9,14 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load environment variables from the root .env file
-dotenv.config({ path: path.join(__dirname, '..', '.env.txt') });
+// Load environment variables
+dotenv.config(); // Load from current directory .env
+dotenv.config({ path: path.join(__dirname, '..', '.env.txt') }); // Fallback to root .env.txt
+dotenv.config({ path: path.join(__dirname, '..', '.env') }); // Fallback to root .env
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:8080',
+  origin: process.env.FRONTEND_URL || '*',
   credentials: true
 }));
 app.use(express.json());

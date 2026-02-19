@@ -23,7 +23,7 @@ app = FastAPI(title="DPDP Compliance Backend API")
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Vite dev server
+    allow_origins=["*"],  # Allow all origins for live deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

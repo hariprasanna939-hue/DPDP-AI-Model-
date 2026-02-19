@@ -163,8 +163,9 @@ const Index = () => {
     }
 
     try {
-      // Call backend API
-      const response = await fetch("http://localhost:8000/chat/", {
+      // Call backend API - Use environment variable or fallback to localhost for development
+      const apiUrl = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '');
+      const response = await fetch(`${apiUrl}/chat/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
